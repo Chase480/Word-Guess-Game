@@ -1,4 +1,15 @@
-const gameCharactors = ["wayne", "stewart", "jonesy", "roald", "mcmurray", "katy", "gail", "squirrelly dan", "pastor glen", "reilly"];
+var gameCharactors = {
+wayne: {picture: "https://i.imgur.com/pLJmgMa.jpg"}, 
+stewart: {picture: "stewart.jpg"},
+jonesy: {picture: "jonesy.jpg"}, 
+roald: {picture: "roald.jpg"},
+mcmurray: {picture: "mcmurray.jpg"},
+katy: {picture: "katy.jpg"},
+gail: {picture: "gail.jpg"},
+squirrelly_dan: {picture: "sqdan.jpg"},
+paster_glen: {picture: "pastorglen.jpg"},
+reilly: {picture: "reilly.jpg"}
+};
 
 var guessedLetters = [];
 
@@ -43,3 +54,7 @@ document.onkeyup = function (event) {
     updateGuessedLetters();
     updateGuessesLeft();
 };
+
+for (let i = 0, i < this.gameCharactors.length; i++) {
+
+}
