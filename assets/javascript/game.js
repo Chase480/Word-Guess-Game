@@ -12,17 +12,22 @@ reilly: {picture: "reilly.jpg"}
 };
 
 var guessedLetters = [];
-
+var matchedLetters = [];
 var wordToGuess = null;
-
+var lettersInWord = [];
 var guessesLeft = 10;
-
+var totalGuesses = 0;
 var wins = 0;
 var losses = 0;
 
 var updateWordToGuess = function () {
-    wordToGuess = gameCharactors[Math.floor(Math.random() * gameCharactors.length)];
+    this.wordToGuess = gameCharactors[Math.floor(Math.random() * gameCharactors.length)];
 };
+
+this.lettersInWord = this.gameCharactors.split("");
+
+this.resetWordView();
+this.updateTotalGuesses();
 
 var updateGuessedLetters = function () {
     document.querySelector("#guesses-so-far").innerHTML = guessedLetters.join(", ");
@@ -55,6 +60,3 @@ document.onkeyup = function (event) {
     updateGuessesLeft();
 };
 
-for (let i = 0, i < this.gameCharactors.length; i++) {
-
-}
