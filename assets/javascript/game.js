@@ -29,6 +29,13 @@ this.lettersInWord = this.gameCharactors.split("");
 this.resetWordView();
 this.updateTotalGuesses();
 
+var updatePage = function(letter) {
+    if (this.guessedLeft === 0) {
+        this.restartGame();
+    }
+    
+}
+
 var updateGuessedLetters = function () {
     document.querySelector("#guesses-so-far").innerHTML = guessedLetters.join(", ");
 };
