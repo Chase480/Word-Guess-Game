@@ -62,15 +62,19 @@ var updateWordVeiw = function () {
         else {
             wordView += "&nbsp;_&nbsp;";
         }
+        document.querySelector("current-word").innerHTML = wordView;
     }
 }
 
 const reset = function () {
+    document.querySelector("#guesses-so-far").innerHTML = "";
     guessedLetters = [];
     guessesLeft = 10;
     updateGuessedLetters();
-    updateGuessesLeft();
     updateWordToGuess();
+    updateMatchedLetters();
+    updateTotalGuesses();
+    updateWordVeiw();
 };
 
 updateGuessesLeft();
