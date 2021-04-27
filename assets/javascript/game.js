@@ -1,14 +1,14 @@
 var gameCharactors = {
-wayne: {picture: "https://i.imgur.com/pLJmgMa.jpg"}, 
-stewart: {picture: "stewart.jpg"},
-jonesy: {picture: "jonesy.jpg"}, 
-roald: {picture: "roald.jpg"},
-mcmurray: {picture: "mcmurray.jpg"},
-katy: {picture: "katy.jpg"},
-gail: {picture: "gail.jpg"},
-squirrelly_dan: {picture: "sqdan.jpg"},
-paster_glen: {picture: "pastorglen.jpg"},
-reilly: {picture: "reilly.jpg"}
+    wayne: { picture: "https://i.imgur.com/pLJmgMa.jpg" },
+    stewart: { picture: "stewart.jpg" },
+    jonesy: { picture: "jonesy.jpg" },
+    roald: { picture: "roald.jpg" },
+    mcmurray: { picture: "mcmurray.jpg" },
+    katy: { picture: "katy.jpg" },
+    gail: { picture: "gail.jpg" },
+    squirrelly_dan: { picture: "sqdan.jpg" },
+    paster_glen: { picture: "pastorglen.jpg" },
+    reilly: { picture: "reilly.jpg" }
 };
 
 var guessedLetters = [];
@@ -29,20 +29,41 @@ this.lettersInWord = this.gameCharactors.split("");
 this.resetWordView();
 this.updateTotalGuesses();
 
-var updatePage = function(letter) {
+var updatePage = function (letter) {
     if (this.guessedLeft === 0) {
         this.restartGame();
     }
-    
 }
 
 var updateGuessedLetters = function () {
-    document.querySelector("#guesses-so-far").innerHTML = guessedLetters.join(", ");
+    if ((this.guessedLetters.indexOf(letter) === -1) && (this.lettersOfTheWord.indexOf(letter) === -1)) {
+        guessedLetters.push(letter);
+        guessesLeft--;
+        document.querySelector("#guesses-so-far").innerHTML = guessedLetters.join(", ");
+        document.querySelector("#guesses-left").innerHTML = guessesLeft;
+    }
+
 };
 
-var updateGuessesLeft = function () {
-    document.querySelector("#guesses-left").innerHTML = guessesLeft;
-};
+var updateMatchedLetters = function () {
+    for (let i = 0; i < this.lettersInWord.length; i++) {
+        if ((letter === this.lettersInWord[i]) && (this.matchedLetters.indexOf(letter) === -1)) {
+            this.matchedLetters.push(letter);
+        }
+    }
+}
+
+var updateWordVeiw = function () {
+    var wordView = "";
+    for (let i = 0; i < this.lettersOfTheWord.length; i++) {
+        if (this.matchedLetters.indexOf(this.lettersOfTheWord[i]) !== -1) {
+            wordView += this.lettersOfTheWord[i];
+        }
+        else {
+            wordView += "&nbsp;_&nbsp;";
+        }
+    }
+}
 
 const reset = function () {
     guessedLetters = [];
