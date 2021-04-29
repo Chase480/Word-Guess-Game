@@ -77,9 +77,26 @@ const reset = function () {
     updateWordVeiw();
 };
 
-updateGuessesLeft();
-updateWordToGuess();
+var updateWins = function () {
+    var win;
 
+    if (this.matchedLetters.length === 0) {
+        win = false;
+    }
+    else {
+        win = true;
+    }
+
+    if (win) {
+        this.win = this.wins + 1;
+        document.querySelector("#wins").innerHTML = this.wins;
+        document.querySelector("#charactorImg").innerHTML = this.gameCharactors.picture;
+
+        return true;
+
+    }
+    return false;
+}
 document.onkeyup = function (event) {
 
     guessesLeft--;
