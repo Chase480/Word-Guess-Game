@@ -22,13 +22,13 @@ var losses = 0;
 
 var updateWordToGuess = function () {
     this.wordToGuess = gameCharactors[Math.floor(Math.random() * gameCharactors.length)];
+
+
+    this.lettersInWord = this.gameCharactors.split("");
+
+    this.resetWordView();
+    this.updateTotalGuesses();
 };
-
-this.lettersInWord = this.gameCharactors.split("");
-
-this.resetWordView();
-this.updateTotalGuesses();
-
 var updatePage = function (letter) {
     if (this.guessedLeft === 0) {
         this.restartGame();
@@ -96,16 +96,14 @@ var updateWins = function () {
 
     }
     return false;
-}
+};
 document.onkeyup = function (event) {
 
-    guessesLeft--;
+    if (event.key >= 65 && event.key <= 90) {
+        gameCharactors.lettersOfTheWord = event.key.toLowerCase();
 
-    const letter = event.key.toLocaleUpperCase();
+        gameCharactors.updatePage(gameCharactors.letterGuessed);
+    }
 
-    guessedLetters.push(letter);
-
-    updateGuessedLetters();
-    updateGuessesLeft();
 };
 
