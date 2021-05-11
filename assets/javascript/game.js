@@ -6,8 +6,8 @@ var gameCharactors = {
     mcmurray: { picture: "mcmurray.jpg" },
     katy: { picture: "katy.jpg" },
     gail: { picture: "gail.jpg" },
-    squirrelly_dan: { picture: "sqdan.jpg" },
-    paster_glen: { picture: "pastorglen.jpg" },
+    dan: { picture: "sqdan.jpg" },
+    glen: { picture: "pastorglen.jpg" },
     reilly: { picture: "reilly.jpg" }
 };
 
@@ -29,14 +29,14 @@ var updateWordToGuess = function () {
     this.resetWordView();
     this.updateTotalGuesses();
 };
-var updatePage = function (letter) {
+let updatePage = function (letter) {
     if (this.guessedLeft === 0) {
         this.restartGame();
     }
 }
 
 var updateGuessedLetters = function () {
-    if ((this.guessedLetters.indexOf(letter) === -1) && (this.lettersOfTheWord.indexOf(letter) === -1)) {
+    if ((this.guessedLetters.indexOf(letter) === -1) && (this.lettersInWord.indexOf(letter) === -1)) {
         guessedLetters.push(letter);
         guessesLeft--;
         document.querySelector("#guesses-so-far").innerHTML = guessedLetters.join(", ");
@@ -55,9 +55,9 @@ var updateMatchedLetters = function () {
 
 var updateWordVeiw = function () {
     var wordView = "";
-    for (let i = 0; i < this.lettersOfTheWord.length; i++) {
-        if (this.matchedLetters.indexOf(this.lettersOfTheWord[i]) !== -1) {
-            wordView += this.lettersOfTheWord[i];
+    for (let i = 0; i < this.lettersInWord.length; i++) {
+        if (this.matchedLetters.indexOf(this.lettersInWord[i]) !== -1) {
+            wordView += this.lettersInWord[i];
         }
         else {
             wordView += "&nbsp;_&nbsp;";
@@ -99,8 +99,8 @@ var updateWins = function () {
 };
 document.onkeyup = function (event) {
 
-    if (event.key >= 65 && event.key <= 90) {
-        gameCharactors.lettersOfTheWord = event.key.toLowerCase();
+    if (event.key >= 65 && event.key <= 122) {
+        gameCharactors.letterInWord = event.key.toLowerCase();
 
         gameCharactors.updatePage(gameCharactors.letterGuessed);
     }

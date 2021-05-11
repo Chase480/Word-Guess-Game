@@ -5,3 +5,9 @@ h1 {
 h2 {
     text-align: center;
 }
+
+body {
+    background-image: url("assets/images/letterkennyCast.jpg");
+opacity: 1;
+
+}
