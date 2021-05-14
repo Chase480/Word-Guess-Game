@@ -33,7 +33,7 @@ let updatePage = function (letter) {
     if (this.guessedLeft === 0) {
         this.restartGame();
     }
-}
+};
 
 var updateGuessedLetters = function () {
     if ((this.guessedLetters.indexOf(letter) === -1) && (this.lettersInWord.indexOf(letter) === -1)) {
@@ -51,7 +51,7 @@ var updateMatchedLetters = function () {
             this.matchedLetters.push(letter);
         }
     }
-}
+};
 
 var updateWordVeiw = function () {
     var wordView = "";
@@ -64,7 +64,7 @@ var updateWordVeiw = function () {
         }
         document.querySelector("current-word").innerHTML = wordView;
     }
-}
+};
 
 const reset = function () {
     document.querySelector("#guesses-so-far").innerHTML = "";
@@ -100,10 +100,10 @@ var updateWins = function () {
 document.onkeyup = function (event) {
 
     if (event.key >= 65 && event.key <= 122) {
-        gameCharactors.letterInWord = event.key.toLowerCase();
+        gameCharactors.lettersInWord = event.key.toLowerCase();
 
-        gameCharactors.updatePage(gameCharactors.letterGuessed);
+        gameCharactors.updatePage(gameCharactors.guessedLetters);
     }
 
 };
-
+console.log(guessedLetters);
